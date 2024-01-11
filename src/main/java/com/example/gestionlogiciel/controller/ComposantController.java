@@ -32,6 +32,11 @@ public class ComposantController {
         return  this.composantRepo.findById(composantKey).get();
     }
 
+    @PostMapping
+    public Composant addComposant(@RequestBody Composant composant){
+        return this.composantRepo.save(composant);
+    }
+
     @PostMapping("/{code}/{version}/to/{nom_lo}/{version_lo}")
     public void assignCompoToLogi(@PathVariable String code,@PathVariable Version version,@PathVariable String  nom_lo , @PathVariable Version version_lo){
         ComposantKey composantKey  = new ComposantKey( code, version);
